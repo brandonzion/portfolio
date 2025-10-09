@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ContactForm from "@/components/ContactForm";
 import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function ContactPage() {
@@ -15,57 +14,45 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-serif font-bold text-amber-500 mb-4">
+          <h1 className="text-6xl font-array font-bold text-amber-500 mb-4">
             Get In Touch
           </h1>
           <div className="h-1 w-24 bg-amber-500 mx-auto mb-6" />
           <p className="text-slate-400 text-lg max-w-3xl mx-auto">
-            Whether you&apos;re looking for a developer, a jazz pianist, or both,
-            I&apos;d love to hear from you
+            Whether you&apos;re looking for a developer, a jazz pianist, or just looking to chat,
+            I&apos;d love to hear from you!
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl p-8">
-              <h2 className="text-2xl font-serif font-bold text-amber-500 mb-6">
-                Send a Message
-              </h2>
-              <ContactForm />
-            </div>
-          </div>
-
-          {/* Contact Info */}
-          <div className="space-y-6">
+        {/* Contact Info Cards */}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Details */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl p-6"
+              className="bg-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl p-8"
             >
-              <h3 className="text-xl font-serif font-bold text-amber-500 mb-4">
+              <h3 className="text-2xl font-array font-bold text-amber-500 mb-6">
                 Contact Information
               </h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <FaEnvelope className="text-amber-500 mt-1 mr-3" />
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <FaEnvelope className="text-amber-500 text-2xl flex-shrink-0" />
                   <div>
-                    <p className="text-slate-400 text-sm">Email</p>
                     <a
-                      href="mailto:your.email@example.com"
-                      className="text-slate-200 hover:text-amber-400 transition-colors"
+                      href="mailto:brandon_sun1@brown.edu"
+                      className="text-slate-200 text-lg hover:text-amber-400 transition-colors"
                     >
-                      your.email@example.com
+                      brandon_sun1@brown.edu
                     </a>
                   </div>
                 </div>
-                <div className="flex items-start">
-                  <FaMapMarkerAlt className="text-amber-500 mt-1 mr-3" />
+                <div className="flex items-center gap-4">
+                  <FaMapMarkerAlt className="text-amber-500 text-2xl flex-shrink-0" />
                   <div>
-                    <p className="text-slate-400 text-sm">Location</p>
-                    <p className="text-slate-200">New York, NY</p>
+                    <p className="text-slate-200 text-lg">Providence, RI</p>
                   </div>
                 </div>
               </div>
@@ -73,55 +60,34 @@ export default function ContactPage() {
 
             {/* Social Links */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl p-6"
+              className="bg-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl p-8"
             >
-              <h3 className="text-xl font-serif font-bold text-amber-500 mb-4">
+              <h3 className="text-2xl font-array font-bold text-amber-500 mb-6">
                 Connect With Me
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/brandonzion"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-slate-300 hover:text-amber-400 transition-colors"
+                  className="flex items-center gap-4 text-slate-300 hover:text-amber-400 transition-colors text-lg"
                 >
-                  <FaGithub className="mr-3 text-xl" />
+                  <FaGithub className="text-2xl flex-shrink-0" />
                   <span>GitHub</span>
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://linkedin.com/in/brandon-sun-46b391241"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center text-slate-300 hover:text-amber-400 transition-colors"
+                  className="flex items-center gap-4 text-slate-300 hover:text-amber-400 transition-colors text-lg"
                 >
-                  <FaLinkedin className="mr-3 text-xl" />
+                  <FaLinkedin className="text-2xl flex-shrink-0" />
                   <span>LinkedIn</span>
                 </a>
               </div>
-            </motion.div>
-
-            {/* Availability */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-gradient-to-br from-amber-950/50 to-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl p-6"
-            >
-              <h3 className="text-xl font-serif font-bold text-amber-500 mb-3">
-                Availability
-              </h3>
-              <p className="text-slate-300 text-sm mb-2">
-                I&apos;m currently available for:
-              </p>
-              <ul className="text-slate-400 text-sm space-y-1">
-                <li>✓ Freelance projects</li>
-                <li>✓ Full-time opportunities</li>
-                <li>✓ Musical collaborations</li>
-                <li>✓ Performance bookings</li>
-              </ul>
             </motion.div>
           </div>
         </div>

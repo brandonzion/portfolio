@@ -41,7 +41,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-serif font-bold text-amber-500 mb-2">
+        <h3 className="text-2xl font-array font-bold text-amber-500 mb-2">
           {project.title}
         </h3>
         <p className="text-slate-300 text-sm mb-4 line-clamp-2">
@@ -67,16 +67,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             <span>View on GitHub</span>
           </div>
           {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center space-x-1 text-slate-400 hover:text-amber-500 transition-colors text-sm"
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+              }}
+              className="flex items-center space-x-1 text-slate-400 hover:text-amber-500 transition-colors text-sm bg-transparent border-none cursor-pointer"
             >
               <FaExternalLinkAlt />
               <span>Live Demo</span>
-            </a>
+            </button>
           )}
         </div>
       </div>

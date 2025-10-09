@@ -31,23 +31,14 @@ export const projects: Project[] = [
   },
   {
     id: "2",
-    title: "Virtual Jazz Ensemble",
+    title: "SmartGrouper - TechForTeachers",
     description:
-      "Real-time collaborative music platform for remote jazz sessions",
-    technologies: ["Next.js", "WebRTC", "Node.js", "Socket.io", "PostgreSQL"],
-    githubUrl: "https://github.com/yourusername/virtual-ensemble",
-    liveUrl: "https://virtual-ensemble.com",
+      "Tool developed by students, for teachers. Automates dynamic grouping of students.",
+    technologies: ["React", "Node.js", "AWS", "GraphQL"],
+    githubUrl: "https://github.com/techforteachers/groupingapp",
+    liveUrl: "https://smartgrouper.techforteachers.site/",
+    imageUrl: "/images/smartgrouper.png",
     featured: true,
-  },
-  {
-    id: "3",
-    title: "Music Theory Visualizer",
-    description:
-      "Interactive tool for visualizing jazz harmony and chord progressions",
-    technologies: ["React", "TypeScript", "D3.js", "Tone.js"],
-    githubUrl: "https://github.com/yourusername/theory-viz",
-    liveUrl: "https://music-theory-viz.com",
-    featured: false,
   },
 ];
 

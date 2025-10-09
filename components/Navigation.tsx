@@ -5,11 +5,17 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaMusic } from "react-icons/fa";
 
-const navLinks = [
+interface NavLink {
+  name: string;
+  path: string;
+  external?: boolean;
+}
+
+const navLinks: NavLink[] = [
   { name: "Home", path: "/" },
   { name: "Projects", path: "/projects" },
   { name: "Music", path: "/music" },
-  { name: "Resume", path: "/resume" },
+  { name: "Resume", path: "/Brandon_Sun_Resume.pdf", external: true },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -23,20 +29,22 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <FaMusic className="text-amber-500 text-2xl group-hover:rotate-12 transition-transform duration-300" />
-                <span className="text-amber-500 text-xl font-bold" style={{ fontFamily: 'Thwack, cursive' }}>
-                  Brandon Sun
-                </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4">
             {navLinks.map((link) => {
               const isActive = pathname === link.path;
+              const linkProps = link.external 
+                ? { target: "_blank" as const, rel: "noopener noreferrer" }
+                : {};
+              
               return (
                 <Link
                   key={link.path}
                   href={link.path}
-                  className="relative px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  {...linkProps}
+                  className="relative px-3 py-2 text-base font-medium transition-colors duration-200 font-array"
                 >
                   <span
                     className={`${

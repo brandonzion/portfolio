@@ -4,7 +4,6 @@ export interface Performance {
   venue: string;
   date: string;
   role: string;
-  description: string;
   imageUrl?: string;
   videoUrl?: string;
   setlist?: string[];
@@ -13,43 +12,40 @@ export interface Performance {
 export const performances: Performance[] = [
   {
     id: "1",
-    title: "Autumn in New York - Quartet Performance",
-    venue: "Blue Note Jazz Club",
-    date: "September 15, 2024",
+    title: "Brown Jazz Combo Concert",
+    venue: "Fulton Hall",
+    date: "October 22, 2024",
     role: "Piano",
-    description: "An evening of jazz standards featuring original arrangements of classic compositions. Led a quartet through an energetic set of bebop and cool jazz pieces.",
-    imageUrl: "/images/performance1.jpg",
-    setlist: ["Autumn in New York", "All the Things You Are", "My Funny Valentine", "Take Five"],
+    imageUrl: "/images/jazzcombo.png",
+    videoUrl:
+      "https://www.youtube.com/watch?v=vrAhRgB5y74&list=PLw0pLHFT40yvkugiPsdXllDMaV5e24buK&index=2&t=3070s",
+    setlist: [
+      "Remember - Hank Mobley",
+      "Backstage Sally - Wayne Shorter",
+      "Strollin' - Horace Silver",
+      "Gibraltar - Freddie Hubbard",
+    ],
   },
   {
     id: "2",
-    title: "Latin Jazz Fusion Night",
-    venue: "Village Vanguard",
-    date: "August 3, 2024",
-    role: "Piano & Composer",
-    description: "Premiered three original compositions blending Afro-Cuban rhythms with modern jazz harmony.",
-    imageUrl: "/images/performance2.jpg",
-    videoUrl: "https://youtube.com/watch?v=example",
-    setlist: ["Montuno Moderne", "Clave Dreams", "Havana Nights"],
-  },
-  {
-    id: "3",
-    title: "Bebop Tribute Concert",
-    venue: "Smalls Jazz Club",
-    date: "July 20, 2024",
+    title: "Newport Jazz Festival",
+    venue: "Fort Adams State Park",
+    date: "August 4-6, 2023",
     role: "Piano",
-    description: "A celebration of bebop pioneers featuring music of Charlie Parker, Dizzy Gillespie, and Thelonious Monk.",
-    imageUrl: "/images/performance3.jpg",
-    setlist: ["Anthropology", "A Night in Tunisia", "'Round Midnight", "Confirmation"],
-  },
-  {
-    id: "4",
-    title: "Jazz at Lincoln Center - Guest Artist",
-    venue: "Dizzy's Club",
-    date: "June 12, 2024",
-    role: "Featured Pianist",
-    description: "Guest performance with the resident ensemble, showcasing contemporary jazz interpretations of timeless melodies.",
-    imageUrl: "/images/performance4.jpg",
+    imageUrl: "/images/newportjazz.webp",
+    videoUrl:
+      "https://whatsupnewp.com/2023/07/ri-high-school-students-to-perform-at-the-2023-newport-jazz-festival/#google_vignette",
+    setlist: [
+      "Giant Steps - John Coltrane",
+      "Butch and Butch - Oliver Nelson",
+      "Milestones - Miles Davis",
+      "Cold Sweat - James Brown",
+      "Alter Ego - James Williams",
+      "Killer Joe - Benny Golson",
+      "One By One - Art Blakey",
+      "Terrestris - Tom Harrell",
+      "Cantaloupe Island - Herbie Hancock",
+    ],
   },
 ];
 
