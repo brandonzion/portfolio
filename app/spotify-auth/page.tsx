@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { FaSpotify, FaCheck, FaExclamationTriangle } from 'react-icons/fa';
 
 export default function SpotifyAuthPage() {
@@ -81,12 +82,12 @@ export default function SpotifyAuthPage() {
 
         <div className="flex flex-col space-y-3">
           {status === 'success' && (
-            <a
+            <Link
               href="/"
               className="inline-block px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white font-medium rounded-lg transition-colors"
             >
               Return to Portfolio
-            </a>
+            </Link>
           )}
           
           {status === 'error' && (
@@ -99,12 +100,12 @@ export default function SpotifyAuthPage() {
             </button>
           )}
           
-          <a
+          <Link
             href="/"
             className="inline-block px-6 py-3 border border-slate-600 hover:border-slate-500 text-slate-300 font-medium rounded-lg transition-colors"
           >
             Return to Portfolio
-          </a>
+          </Link>
         </div>
 
         {status === 'success' && (

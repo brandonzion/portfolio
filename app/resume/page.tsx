@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaDownload, FaBriefcase, FaGraduationCap, FaCode, FaTrophy } from "react-icons/fa";
+import { FaBriefcase, FaGraduationCap, FaCode, FaTrophy } from "react-icons/fa";
 
 export default function ResumePage() {
   return (

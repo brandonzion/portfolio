@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FaMusic, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import { FaMusic } from "react-icons/fa";
 import { Performance } from "@/data/performances";
 
 interface PerformanceCardProps {
