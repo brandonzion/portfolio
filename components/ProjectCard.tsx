@@ -40,7 +40,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="px-6 py-3">
         <h3 className="text-2xl font-array font-bold text-amber-500 mb-2">
           {project.title}
         </h3>

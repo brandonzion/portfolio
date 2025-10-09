@@ -13,6 +13,7 @@ interface SpotifyTrack {
   songUrl: string;
   previewUrl: string | null;
   isPlaying: boolean;
+  lastPlayed?: boolean;
   duration: number;
   progress: number;
   explicit: boolean;
@@ -30,7 +31,7 @@ export default function SpotifyWidget() {
         const response = await fetch('/api/spotify/now-playing');
         const data = await response.json();
         
-        if (data.isPlaying && !data.error) {
+        if (data.name && !data.error) {
           setTrack({
             name: data.name,
             artist: data.artist,
@@ -39,6 +40,7 @@ export default function SpotifyWidget() {
             songUrl: data.songUrl,
             previewUrl: data.previewUrl,
             isPlaying: data.isPlaying,
+            lastPlayed: data.lastPlayed,
             duration: data.duration,
             progress: data.progress,
             explicit: data.explicit,
@@ -60,13 +62,11 @@ export default function SpotifyWidget() {
 
     fetchCurrentTrack();
     
-    // Update every 10 seconds for real-time progress
     const interval = setInterval(fetchCurrentTrack, 10000);
     
     return () => clearInterval(interval);
   }, []);
 
-  // Calculate progress percentage
   const progressPercentage = track 
     ? Math.min((track.progress / track.duration) * 100, 100)
     : 0;
@@ -107,7 +107,7 @@ export default function SpotifyWidget() {
               className="object-cover"
               unoptimized
             />
-            {track.isPlaying && (
+            {track.isPlaying && !track.lastPlayed && (
               <motion.div
                 className="absolute inset-0 bg-amber-500/20"
                 animate={{ opacity: [0.2, 0.5, 0.2] }}
@@ -121,10 +121,10 @@ export default function SpotifyWidget() {
         {!track.albumImageUrl && (
           <div className="relative">
             <FaSpotify 
-              className={`text-amber-500 ${track.isPlaying ? 'animate-pulse' : ''}`} 
+              className={`text-amber-500 ${track.isPlaying && !track.lastPlayed ? 'animate-pulse' : ''}`} 
               size={18} 
             />
-            {track.isPlaying && (
+            {track.isPlaying && !track.lastPlayed && (
               <div className="absolute -top-1 -right-1 w-2 h-2 bg-amber-500 rounded-full animate-ping" />
             )}
           </div>
@@ -188,8 +188,8 @@ export default function SpotifyWidget() {
         </a>
       </motion.div>
 
-      {/* Progress Bar */}
-      {track.isPlaying && (
+      {/* Progress Bar - only show when actively playing */}
+      {track.isPlaying && !track.lastPlayed && (
         <motion.div 
           className="absolute -bottom-1 left-0 right-0 h-0.5 bg-slate-700 rounded-full overflow-hidden"
           initial={{ opacity: 0 }}
@@ -286,8 +286,8 @@ export default function SpotifyWidget() {
                 </a>
               </div>
 
-              {/* Now Playing Badge */}
-              {track.isPlaying && (
+              {/* Now Playing / Last Played Badge */}
+              {track.isPlaying && !track.lastPlayed ? (
                 <div className="mt-4 flex items-center justify-center gap-2 text-amber-500 text-sm">
                   <div className="flex gap-1">
                     {[0, 1, 2].map((i) => (
@@ -307,7 +307,11 @@ export default function SpotifyWidget() {
                   </div>
                   <span className="font-medium">Now Playing</span>
                 </div>
-              )}
+              ) : track.lastPlayed ? (
+                <div className="mt-4 text-center text-slate-400 text-sm">
+                  <span className="font-medium">Last Played</span>
+                </div>
+              ) : null}
             </motion.div>
           </>
         )}
