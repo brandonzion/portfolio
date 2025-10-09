@@ -26,7 +26,7 @@ export default function HeroContent() {
             <h2 className="text-2xl md:text-3xl text-slate-300 font-light">
               APMA & CS @{" "}
               <a
-                href="https://www.brown.edu"
+                href="https://cntr.brown.edu/cntr-aisle"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-bold text-amber-400 hover:text-amber-300 transition-colors duration-300"
