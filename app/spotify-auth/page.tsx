@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaSpotify, FaCheck, FaExclamationTriangle } from 'react-icons/fa';
 
-export default function SpotifyAuthPage() {
+function SpotifyAuthContent() {
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
   const [message, setMessage] = useState('');
@@ -117,5 +117,17 @@ export default function SpotifyAuthPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SpotifyAuthPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
+        <div className="text-amber-500 text-xl">Loading...</div>
+      </div>
+    }>
+      <SpotifyAuthContent />
+    </Suspense>
   );
 }
