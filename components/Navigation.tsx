@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { FaMusic, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import Image from "next/image";
 
 interface NavLink {
   name: string;
@@ -30,7 +31,16 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <FaMusic className="text-amber-500 text-2xl group-hover:rotate-12 transition-transform duration-300" />
+            <div className="relative flex items-center justify-center w-8 h-8">
+              <div className="sun-glow-ring"></div>
+              <Image
+                src="/sun.png"
+                alt="Brandon Sun Logo"
+                width={32}
+                height={32}
+                className="relative z-10 group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

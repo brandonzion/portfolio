@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   authors: [{ name: "Brandon Sun" }],
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/sun.png", type: "image/png" },
       { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: "/favicon.svg",
+    apple: "/sun.png",
   },
   openGraph: {
     title: "Brandon Sun - Developer & Jazz Pianist",

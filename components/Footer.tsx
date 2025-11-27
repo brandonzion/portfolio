@@ -13,8 +13,8 @@ export default function Footer() {
           </p>
           <div className="flex justify-center">
             <Image
-              src="/favicon.svg"
-              alt="Music Icon"
+              src="/sun.png"
+              alt="Brandon Sun Logo"
               width={28}
               height={28}
               className="opacity-80"

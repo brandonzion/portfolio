@@ -119,3 +119,35 @@ html {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Sun glow ring animation */
+@keyframes expandRing {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.25);
+    opacity: 0;
+  }
+}
+
+.sun-glow-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(224, 184, 134, 0.6);
+  box-shadow: 0 0 20px rgba(224, 184, 134, 0.4), 0 0 30px rgba(236, 201, 152, 0.3);
+  filter: blur(1.5px);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.group:hover .sun-glow-ring {
+  opacity: 1;
+  animation: expandRing 2s ease-out infinite;
+}
