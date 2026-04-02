@@ -11,26 +11,31 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-  return (
-    <motion.a
-      href={project.githubUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      viewport={{ once: true }}
-      className="group relative bg-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl overflow-hidden hover:border-amber-500/50 transition-all duration-300 cursor-pointer block"
-    >
+  const cardHref = project.githubUrl ?? project.liveUrl;
+  const motionProps = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { delay: index * 0.1, duration: 0.5 },
+    viewport: { once: true },
+    className:
+      "group relative bg-slate-800/50 backdrop-blur-sm border border-amber-600/20 rounded-xl overflow-hidden hover:border-amber-500/50 transition-all duration-300 block " +
+      (cardHref ? "cursor-pointer" : "cursor-default"),
+  };
+
+  const inner = (
+    <>
       {/* Project Image */}
       <div className="relative h-48 bg-slate-700 overflow-hidden">
-        {/* GitHub placeholder background */}
         <div className="absolute inset-0 flex items-center justify-center text-slate-600 bg-slate-700">
-          <FaGithub size={48} />
+          {project.githubUrl ? (
+            <FaGithub size={48} />
+          ) : (
+            <FaExternalLinkAlt size={48} />
+          )}
         </div>
         {project.imageUrl && (
-          <Image 
-            src={project.imageUrl} 
+          <Image
+            src={project.imageUrl}
             alt={project.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -62,21 +67,31 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Links */}
         <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-1 text-slate-400 group-hover:text-amber-500 transition-colors text-sm">
-            <FaGithub />
-            <span>View on GitHub</span>
-          </div>
-          {project.liveUrl && (
+          {project.githubUrl && (
+            <div className="flex items-center space-x-1 text-slate-400 group-hover:text-amber-500 transition-colors text-sm">
+              <FaGithub />
+              <span>View on GitHub</span>
+            </div>
+          )}
+          {project.liveUrl && project.githubUrl && (
             <button
+              type="button"
               onClick={(e) => {
+                e.preventDefault();
                 e.stopPropagation();
-                window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                window.open(project.liveUrl, "_blank", "noopener,noreferrer");
               }}
               className="flex items-center space-x-1 text-slate-400 hover:text-amber-500 transition-colors text-sm bg-transparent border-none cursor-pointer"
             >
               <FaExternalLinkAlt />
               <span>Live Demo</span>
             </button>
+          )}
+          {project.liveUrl && !project.githubUrl && (
+            <div className="flex items-center space-x-1 text-slate-400 group-hover:text-amber-500 transition-colors text-sm">
+              <FaExternalLinkAlt />
+              <span>Visit site</span>
+            </div>
           )}
         </div>
       </div>
@@ -87,7 +102,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           Featured
         </div>
       )}
-    </motion.a>
+    </>
   );
-}
 
+  if (cardHref) {
+    return (
+      <motion.a
+        href={cardHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...motionProps}
+      >
+        {inner}
+      </motion.a>
+    );
+  }
+
+  return <motion.div {...motionProps}>{inner}</motion.div>;
+}

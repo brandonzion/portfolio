@@ -11,6 +11,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "2",
+    title: "CNTR AISLE Portal",
+    description:
+      "Scoring platform for CNTR AISLE for policy experts to score AI legislation.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Python"],
+    featured: true,
+    liveUrl: "https://www.cntr-aisle.org/",
+    imageUrl: "/images/cntr.png",
+  },
+  {
     id: "1",
     title: "4real?",
     description: "AI-Powered Authenticity Verification Platform",
@@ -28,15 +38,6 @@ export const projects: Project[] = [
     liveUrl: "https://4reall.netlify.app/",
     imageUrl: "/images/4real.png",
     featured: true,
-  },
-  {
-    id: "2",
-    title: "CNTR AISLE Scoring Platform (Coming Soon)",
-    description:
-      "Scoring platform for CNTR AISLE for policy experts to score AI legislation.",
-    technologies: ["Next.js", "TypeScript", "Firebase"],
-    githubUrl: "https://github.com/Timfon/cntr-webapp",
-    featured: false,
   },
   {
     id: "3",
